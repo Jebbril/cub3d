@@ -1,20 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   garbage.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 14:40:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/11 17:56:01 by orakib           ###   ########.fr       */
+/*   Created: 2023/08/11 18:14:10 by orakib            #+#    #+#             */
+/*   Updated: 2023/08/11 18:41:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	free_matrix(char **matrice)
 {
-	t_cube	cube;
+	int	i;
 
-	parsing(ac, av, &cube);
+	i = 0;
+	while (matrice[i])
+	{
+		free(matrice[i]);
+		i++;
+	}
+	free(matrice);
+}
+
+void	garbage(t_cube *cube)
+{
+	if (cube->map)
+		free_matrix(cube->map);
+	if (cube->no)
+		free(cube->no);
+	if (cube->so)
+		free(cube->so);
+	if (cube->we)
+		free(cube->we);
+	if (cube->ea)
+		free(cube->ea);
+	if (cube->f)
+		free(cube->f);
+	if (cube->c)
+		free(cube->c);
 }

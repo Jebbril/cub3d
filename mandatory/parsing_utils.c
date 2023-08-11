@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:42:46 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/10 17:14:14 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/11 18:00:03 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ static int	ft_strlen(char *s)
 	return (i);
 }
 
-int	check_ext(char *str)
+int	check_ext(char *str, char *ext)
 {
 	int	i;
 	int	len;
@@ -30,16 +30,16 @@ int	check_ext(char *str)
 	i = 1;
 	len = ft_strlen(str);
 	if (str[len - i])
-		if (str[len - i] == 'b')
+		if (str[len - i] == ext[3])
 			i++;
 	if (str[len - i])
-		if (str[len - i] == 'u')
+		if (str[len - i] == ext[2])
 			i++;
 	if (str[len - i])
-		if (str[len - i] == 'c')
+		if (str[len - i] == ext[1])
 			i++;
 	if (str[len - i])
-		if (str[len - i] == '.')
+		if (str[len - i] == ext[0])
 			i++;
 	if (i == 5 && i <= len)
 		return (0);

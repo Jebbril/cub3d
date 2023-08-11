@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/10 17:09:16 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/11 18:41:20 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,24 @@
 # include <stdlib.h>
 # include "../gnl/get_next_line.h"
 
-typedef struct s_cube // struct that i will use to store all the necessary data
+typedef struct s_cube
 {
-	char	*mapstr; // map file content put into a string;
-	char	**map; // i will split the map to lines so i can get a 2d array of map elements
+	char	*mapstr;
+	char	**map;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f;
+	char	*c;
 }	t_cube;
 
 // parsing
 void	parsing(int ac, char **av, t_cube *cube);
-int	check_ext(char *str);
+int		check_ext(char *str, char *ext);
+int		ft_strlen(char *s);
+char	**ft_split(char *s, char c);
+void	garbage(t_cube *cube);
+void	get_info(t_cube *cube);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:23:39 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/10 17:10:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/11 18:36:28 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_fd(int ac, char **av) // checking nb of args + checking extension + opening the file
+int	get_fd(int ac, char **av)
 {
 	int	fd;
 
@@ -21,7 +21,7 @@ int	get_fd(int ac, char **av) // checking nb of args + checking extension + open
 		write(2, "Error\nProgram takes one argument !\n", 36);
 		exit(EXIT_FAILURE);
 	}
-	if (check_ext(av[1]))
+	if (check_ext(av[1], ".cub"))
 	{
 		write(2, "Error\nWrong extension\n", 23);
 		exit(EXIT_FAILURE);
@@ -62,5 +62,6 @@ void	parsing(int ac, char **av, t_cube *cube)
 
 	fd = get_fd(ac, av);
 	cube->mapstr = maptostr(fd);
-	printf("%s", cube->mapstr);
+	cube->map = ft_split(cube->mapstr, '\n');
+	get_info(cube);
 }
