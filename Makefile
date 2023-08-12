@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/08/11 18:39:33 by orakib           ###   ########.fr        #
+#    Updated: 2023/08/12 17:39:26 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@
 NAME = cub3d
 
 SRC = mandatory/main.c mandatory/parsing.c mandatory/parsing_utils.c gnl/get_next_line.c \
-		gnl/get_next_line_utils.c mandatory/ft_split.c mandatory/garbage.c mandatory/get_info.c
+		gnl/get_next_line_utils.c mandatory/ft_split.c mandatory/garbage.c mandatory/get_info.c \
+		mandatory/get_map.c
 
 BNS_SRC = 
 
@@ -27,7 +28,7 @@ BNS_HEADER =
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

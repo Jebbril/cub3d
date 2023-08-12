@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   garbage.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:14:10 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 16:07:09 by orakib           ###   ########.fr       */
+/*   Created: 2023/08/12 14:40:55 by orakib            #+#    #+#             */
+/*   Updated: 2023/08/12 14:57:27 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_matrix(char **matrice)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*t1;
+	unsigned char	*t2;
 
 	i = 0;
-	while (matrice[i])
+	t1 = (unsigned char *)s1;
+	t2 = (unsigned char *)s2;
+	while (t1[i] && t2[i] && i < n)
 	{
-		free(matrice[i]);
+		if (t1[i] != t2[i])
+			return (t1[i] - t2[i]);
 		i++;
 	}
-	free(matrice);
-}
-
-void	garbage(t_cube *cube)
-{
-	if (cube->map)
-		free_matrix(cube->map);
-	if (cube->mapstr)
-		free(cube->mapstr);
-	if (cube->no)
-		free(cube->no);
-	if (cube->so)
-		free(cube->so);
-	if (cube->we)
-		free(cube->we);
-	if (cube->ea)
-		free(cube->ea);
-	if (cube->f)
-		free(cube->f);
-	if (cube->c)
-		free(cube->c);
+	if (i < n)
+		return (t1[i] - t2[i]);
+	return (0);
 }

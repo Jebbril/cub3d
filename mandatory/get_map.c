@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 14:40:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 17:08:03 by orakib           ###   ########.fr       */
+/*   Created: 2023/08/12 17:08:37 by orakib            #+#    #+#             */
+/*   Updated: 2023/08/12 18:46:15 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	get_map(t_cube *cube)
 {
-	t_cube	cube;
-
-	parsing(ac, av, &cube);
-	garbage(&cube);
-	system("leaks cub3d");
+	(void)cube;
 }
