@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:23:39 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 17:08:25 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/14 17:17:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,4 @@ void	parsing(int ac, char **av, t_cube *cube)
 	cube->map = ft_split(cube->mapstr, '\n');
 	get_info(cube);
 	get_map(cube);
-	printf("%s\n", cube->no);
-	printf("%s\n", cube->so);
-	printf("%s\n", cube->we);
-	printf("%s\n", cube->ea);
-	printf("%s\n", cube->f);
-	printf("%s\n", cube->c);
 }
