@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 17:38:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 17:56:24 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	free_matrix(char **matrice);
 void	garbage(t_cube *cube);
 void	get_info(t_cube *cube);
 void	get_map(t_cube *cube);
+void	parse_map(t_cube *cube);
 
 #endif

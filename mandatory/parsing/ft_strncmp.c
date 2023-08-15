@@ -6,11 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:40:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 14:57:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:37:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

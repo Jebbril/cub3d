@@ -6,11 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:23:39 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/14 17:17:05 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:37:21 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	get_fd(int ac, char **av)
 {
@@ -62,7 +62,9 @@ void	parsing(int ac, char **av, t_cube *cube)
 
 	fd = get_fd(ac, av);
 	cube->mapstr = maptostr(fd);
+	cube->map = NULL;
 	cube->map = ft_split(cube->mapstr, '\n');
 	get_info(cube);
 	get_map(cube);
+	parse_map(cube);
 }

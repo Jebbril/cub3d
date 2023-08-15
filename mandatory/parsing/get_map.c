@@ -6,11 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/14 18:03:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:37:37 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	check_newline(t_cube *cube)
 {
@@ -43,15 +43,25 @@ void	check_newline(t_cube *cube)
 
 void	get_map(t_cube *cube)
 {
+	int		i;
+	char	**tmp;
+
+	i = -1;
 	check_newline(cube);
-	free(cube->map[0]);
-	free(cube->map[1]);
-	free(cube->map[2]);
-	free(cube->map[3]);
-	free(cube->map[4]);
-	free(cube->map[5]);
-	cube->map += 6;
-	int	i = -1;
+	tmp = ft_split(cube->mapstr, '\n');
+	while (cube->map[++i])
+	{
+		free(cube->map[i]);
+		cube->map[i] = NULL;
+	}
+	i = -1;
+	while (tmp[++i + 6])
+		cube->map[i] = tmp[i + 6];
+	i = -1;
+	while (++i < 6)
+		free(tmp[i]);
+	free(tmp);
+	i = -1;
 	while (cube->map[++i])
 		printf("%s\n", cube->map[i]);
 }

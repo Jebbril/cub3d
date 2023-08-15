@@ -6,11 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/11 18:30:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:37:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 char	*ft_strchr(const char *s, int c)
 {

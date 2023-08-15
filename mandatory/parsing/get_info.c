@@ -6,11 +6,11 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/12 16:40:55 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:37:40 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	get_info3(char **dir, char **str, char *id, int start)
 {

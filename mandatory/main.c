@@ -6,17 +6,18 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:40:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/14 17:24:46 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/15 17:44:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+void leaks(){system("leaks cub3d");}
 int	main(int ac, char **av)
 {
 	t_cube	cube;
 
+
 	parsing(ac, av, &cube);
-	// garbage(&cube);
-	system("leaks cub3d");
+	garbage(&cube);
+	atexit(leaks);
 }
