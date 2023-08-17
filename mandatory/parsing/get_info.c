@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/15 18:37:40 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:39:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	get_info3(char **dir, char **str, char *id, int start)
 {
 	if (!ft_strncmp(str[0], id, 3) && str[1])
 	{
+		if (*dir)
+		{
+			free(*dir);
+			*dir = NULL;
+			return (0);
+		}
 		*dir = ft_substr(str[1], start, ft_strlen(str[1]));
 		return (1);
 	}

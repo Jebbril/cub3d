@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/08/15 18:38:38 by orakib           ###   ########.fr        #
+#    Updated: 2023/08/17 13:32:34 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME = cub3d
 
 SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_utils.c gnl/get_next_line.c \
 		gnl/get_next_line_utils.c mandatory/parsing/ft_split.c mandatory/garbage.c mandatory/parsing/get_info.c \
-		mandatory/parsing/get_map.c mandatory/parsing/parse_map.c
+		mandatory/parsing/get_map.c mandatory/parsing/parse_map.c mandatory/parsing/parse_info.c \
+		mandatory/parsing/ft_atoi.c mandatory/parsing/ft_isdigit.c
 
 BNS_SRC = 
 
