@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/21 16:46:09 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/21 16:54:52 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ void	check_newline(t_cube *cube)
 	}
 }
 
+void	check_lastline(t_cube *cube)
+{
+	if (cube->mapstr[ft_strlen(cube->mapstr) - 1] == '\n')
+	{
+		write(2, "Error\nNew line in the map\n", 27);
+		garbage(cube);
+		exit(EXIT_FAILURE);
+	}
+}
+
 void	get_map(t_cube *cube)
 {
 	int		i;
@@ -48,6 +58,7 @@ void	get_map(t_cube *cube)
 
 	i = -1;
 	check_newline(cube);
+	check_lastline(cube);
 	tmp = ft_split(cube->mapstr, '\n');
 	while (cube->map[++i])
 	{
