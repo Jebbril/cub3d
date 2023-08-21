@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/17 13:39:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/21 16:46:32 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_info3(char **dir, char **str, char *id, int start)
 {
-	if (!ft_strncmp(str[0], id, 3) && str[1])
+	if (str[0] && !ft_strncmp(str[0], id, 3) && str[1])
 	{
 		if (*dir)
 		{
@@ -51,6 +51,23 @@ int	get_info2(t_cube *cube, int i)
 	return (ret);
 }
 
+int	check_emptylines(t_cube *cube)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = 0;
+	while (cube->map[++i])
+	{
+		while (cube->map[i][j] && cube->map[i][j] == ' ')
+			j++;
+		if (j == ft_strlen(cube->map[i]))
+			return (1);
+	}
+	return (0);
+}
+
 void	get_info(t_cube *cube)
 {
 	int	i;
@@ -66,7 +83,7 @@ void	get_info(t_cube *cube)
 	cube->f = NULL;
 	while (cube->map[++i])
 		j += get_info2(cube, i);
-	if (j != 6)
+	if (j != 6 || check_emptylines(cube))
 	{
 		write(2, "Error\nIncorrect map info\n", 26);
 		garbage(cube);

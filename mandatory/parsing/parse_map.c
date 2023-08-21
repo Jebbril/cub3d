@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 17:31:34 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/15 18:37:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/21 15:54:09 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	check_edges(t_cube *cube)
 
 	i = -1;
 	j = 0;
+	if (cube->map[0] == NULL)
+	{
+		write(2, "Error\nThere is no map\n", 23);
+		garbage(cube);
+		exit(EXIT_FAILURE);
+	}
 	while (cube->map[0][++i])
 		if (cube->map[0][i] != ' ' && cube->map[0][i] != '1')
 			return (1);
@@ -128,7 +134,7 @@ void	parse_map(t_cube *cube)
 	}
 	if (check_player(cube))
 	{
-		write(2, "Error\nwrong palyer count\n", 26);
+		write(2, "Error\nwrong player count\n", 26);
 		garbage(cube);
 		exit(EXIT_FAILURE);
 	}

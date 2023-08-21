@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/08/17 13:32:34 by orakib           ###   ########.fr        #
+#    Updated: 2023/08/21 16:00:40 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ BNS_HEADER =
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 
