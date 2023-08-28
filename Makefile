@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/08/21 16:00:40 by orakib           ###   ########.fr        #
+#    Updated: 2023/08/28 18:21:24 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ NAME = cub3d
 SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_utils.c gnl/get_next_line.c \
 		gnl/get_next_line_utils.c mandatory/parsing/ft_split.c mandatory/garbage.c mandatory/parsing/get_info.c \
 		mandatory/parsing/get_map.c mandatory/parsing/parse_map.c mandatory/parsing/parse_info.c \
-		mandatory/parsing/ft_atoi.c mandatory/parsing/ft_isdigit.c
+		mandatory/parsing/ft_atoi.c mandatory/parsing/ft_isdigit.c \
+		mandatory/raycasting/raycasting.c mandatory/raycasting/background.c mandatory/raycasting/minimap.c \
+
 
 BNS_SRC = 
 
@@ -29,7 +31,7 @@ BNS_HEADER =
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,7 +45,7 @@ $(BONUS): $(BNS_OBJ)
 	$(CC) $(CFLAGS) -o $(BONUS) $(BNS_OBJ)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 mandatory/%.o: mandatory/%.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@

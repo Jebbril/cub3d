@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/16 21:10:55 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/28 18:19:48 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,33 @@
 # include <math.h>
 # include <stdlib.h>
 # include "../gnl/get_next_line.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
+# define TILE_SIZE 8
 
 typedef struct s_cube
 {
-	char	*mapstr;
-	char	**map;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	int		f_red;
-	int		f_green;
-	int		f_blue;
-	int		c_red;
-	int		c_green;
-	int		c_blue;
+	char		*mapstr;
+	char		**map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	int			f_red;
+	int			f_green;
+	int			f_blue;
+	int			c_red;
+	int			c_green;
+	int			c_blue;
+	
+	mlx_t		*mlx;
+	mlx_image_t	*background;
+	mlx_image_t	*mapwall;
+	mlx_image_t	*mapzero;
 }	t_cube;
 
 // parsing
@@ -56,5 +66,10 @@ void	get_info(t_cube *cube);
 void	get_map(t_cube *cube);
 void	parse_map(t_cube *cube);
 void	parse_info(t_cube *cube);
+
+// raycating
+int		raycasting(t_cube *cube);
+int		draw_background(t_cube *cube);
+int		draw_minimap(t_cube *cube);
 
 #endif
