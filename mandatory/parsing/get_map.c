@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/21 16:54:52 by orakib           ###   ########.fr       */
+/*   Updated: 2023/08/29 18:06:43 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,4 @@ void	get_map(t_cube *cube)
 	while (++i < 6)
 		free(tmp[i]);
 	free(tmp);
-	i = -1;
-	while (cube->map[++i])
-		printf("%s\n", cube->map[i]);
 }

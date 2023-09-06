@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/28 18:19:48 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/03 13:58:46 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
-# define TILE_SIZE 8
+# define TILE_SIZE 32
 
 typedef struct s_cube
 {
@@ -44,11 +44,9 @@ typedef struct s_cube
 	int			c_red;
 	int			c_green;
 	int			c_blue;
-	
+
 	mlx_t		*mlx;
 	mlx_image_t	*background;
-	mlx_image_t	*mapwall;
-	mlx_image_t	*mapzero;
 }	t_cube;
 
 // parsing
