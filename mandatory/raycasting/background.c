@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:39:18 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/28 16:56:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 19:31:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	get_ccolors(t_cube *cube)
 {
-	return (cube->c_red << 24 | cube->c_green << 16 | cube->c_blue << 8 | 0xFF);
+	return (cube->p.c_red << 24
+		| cube->p.c_green << 16 | cube->p.c_blue << 8 | 0xFF);
 }
 
 int	get_fcolors(t_cube *cube)
 {
-	return (cube->f_red << 24 | cube->f_green << 16 | cube->f_blue << 8 | 0xFF);
+	return (cube->p.f_red << 24
+		| cube->p.f_green << 16 | cube->p.f_blue << 8 | 0xFF);
 }
 
 int	draw_background(t_cube *cube)

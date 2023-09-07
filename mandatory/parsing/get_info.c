@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/21 16:46:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 19:27:31 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ int	get_info2(t_cube *cube, int i)
 	int		ret;
 
 	ret = 0;
-	str = ft_split(cube->map[i], ' ');
-	if (get_info3(&cube->no, str, "NO", 2))
+	str = ft_split(cube->p.map[i], ' ');
+	if (get_info3(&cube->p.no, str, "NO", 2))
 		ret = 1;
-	else if (get_info3(&cube->so, str, "SO", 2))
+	else if (get_info3(&cube->p.so, str, "SO", 2))
 		ret = 1;
-	else if (get_info3(&cube->we, str, "WE", 2))
+	else if (get_info3(&cube->p.we, str, "WE", 2))
 		ret = 1;
-	else if (get_info3(&cube->ea, str, "EA", 2))
+	else if (get_info3(&cube->p.ea, str, "EA", 2))
 		ret = 1;
-	else if (get_info3(&cube->c, str, "C", 0))
+	else if (get_info3(&cube->p.c, str, "C", 0))
 		ret = 1;
-	else if (get_info3(&cube->f, str, "F", 0))
+	else if (get_info3(&cube->p.f, str, "F", 0))
 		ret = 1;
 	free_matrix(str);
 	return (ret);
@@ -58,11 +58,11 @@ int	check_emptylines(t_cube *cube)
 
 	i = -1;
 	j = 0;
-	while (cube->map[++i])
+	while (cube->p.map[++i])
 	{
-		while (cube->map[i][j] && cube->map[i][j] == ' ')
+		while (cube->p.map[i][j] && cube->p.map[i][j] == ' ')
 			j++;
-		if (j == ft_strlen(cube->map[i]))
+		if (j == ft_strlen(cube->p.map[i]))
 			return (1);
 	}
 	return (0);
@@ -75,13 +75,13 @@ void	get_info(t_cube *cube)
 
 	i = -1;
 	j = 0;
-	cube->no = NULL;
-	cube->so = NULL;
-	cube->we = NULL;
-	cube->ea = NULL;
-	cube->c = NULL;
-	cube->f = NULL;
-	while (cube->map[++i])
+	cube->p.no = NULL;
+	cube->p.so = NULL;
+	cube->p.we = NULL;
+	cube->p.ea = NULL;
+	cube->p.c = NULL;
+	cube->p.f = NULL;
+	while (cube->p.map[++i])
 		j += get_info2(cube, i);
 	if (j != 6 || check_emptylines(cube))
 	{

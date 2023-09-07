@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/03 13:58:46 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 20:04:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
 # define TILE_SIZE 32
+# define FOV 60
+# define NUM_RAYS W_WIDTH
 
-typedef struct s_cube
+typedef struct s_pasring
 {
 	char		*mapstr;
 	char		**map;
@@ -44,9 +46,42 @@ typedef struct s_cube
 	int			c_red;
 	int			c_green;
 	int			c_blue;
+}	t_parsing;
 
+typedef struct s_player
+{
+	float		x;
+	float		y;
+	float		radius;
+	int			turndirection;
+	int			walkdirection;
+	float		rotationangle;
+	float		walkspeed;
+	float		turnspeed;
+}	t_player;
+
+typedef struct s_ray
+{
+	float		rayangle;
+	float		wallhitx;
+	float		wallhity;
+	float		distance;
+	int			washitvertical;
+	int			israyfacingup;
+	int			israyfacingdown;
+	int			israyfacingleft;
+	int			israyfacingright;
+	int			wallhitcontent;
+}	t_ray;
+
+typedef struct s_cube
+{
 	mlx_t		*mlx;
 	mlx_image_t	*background;
+	mlx_image_t	*player;
+	t_parsing	p;
+	t_player	pl;
+	t_ray		rays[NUM_RAYS];
 }	t_cube;
 
 // parsing
@@ -68,6 +103,6 @@ void	parse_info(t_cube *cube);
 // raycating
 int		raycasting(t_cube *cube);
 int		draw_background(t_cube *cube);
-int		draw_minimap(t_cube *cube);
+int		draw_circle(t_cube *cube);
 
 #endif

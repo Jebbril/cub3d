@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/09/03 13:59:26 by orakib           ###   ########.fr        #
+#    Updated: 2023/09/07 20:23:11 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_uti
 		gnl/get_next_line_utils.c mandatory/parsing/ft_split.c mandatory/garbage.c mandatory/parsing/get_info.c \
 		mandatory/parsing/get_map.c mandatory/parsing/parse_map.c mandatory/parsing/parse_info.c \
 		mandatory/parsing/ft_atoi.c mandatory/parsing/ft_isdigit.c \
-		mandatory/raycasting/raycasting.c mandatory/raycasting/background.c
+		mandatory/raycasting/raycasting.c mandatory/raycasting/background.c mandatory/raycasting/drawing.c \
+		
 
 
 BNS_SRC = 

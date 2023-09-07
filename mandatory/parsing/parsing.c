@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:23:39 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/16 21:10:08 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 19:27:31 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	parsing(int ac, char **av, t_cube *cube)
 	int	fd;
 
 	fd = get_fd(ac, av);
-	cube->mapstr = maptostr(fd);
-	cube->map = NULL;
-	cube->map = ft_split(cube->mapstr, '\n');
+	cube->p.mapstr = maptostr(fd);
+	cube->p.map = NULL;
+	cube->p.map = ft_split(cube->p.mapstr, '\n');
 	get_info(cube);
 	get_map(cube);
 	parse_map(cube);

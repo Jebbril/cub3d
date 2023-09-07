@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:14:10 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/15 18:30:45 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 19:27:31 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void	free_matrix(char **matrice)
 
 void	garbage(t_cube *cube)
 {
-	if (cube->map)
-		free_matrix(cube->map);
-	if (cube->mapstr)
-		free(cube->mapstr);
-	if (cube->no)
-		free(cube->no);
-	if (cube->so)
-		free(cube->so);
-	if (cube->we)
-		free(cube->we);
-	if (cube->ea)
-		free(cube->ea);
-	if (cube->f)
-		free(cube->f);
-	if (cube->c)
-		free(cube->c);
+	if (cube->p.map)
+		free_matrix(cube->p.map);
+	if (cube->p.mapstr)
+		free(cube->p.mapstr);
+	if (cube->p.no)
+		free(cube->p.no);
+	if (cube->p.so)
+		free(cube->p.so);
+	if (cube->p.we)
+		free(cube->p.we);
+	if (cube->p.ea)
+		free(cube->p.ea);
+	if (cube->p.f)
+		free(cube->p.f);
+	if (cube->p.c)
+		free(cube->p.c);
 }

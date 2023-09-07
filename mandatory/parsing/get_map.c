@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:37 by orakib            #+#    #+#             */
-/*   Updated: 2023/08/29 18:06:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/07 19:27:31 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ void	check_newline(t_cube *cube)
 
 	i = -1;
 	k = 0;
-	while (cube->mapstr[++i])
+	while (cube->p.mapstr[++i])
 	{
-		if (cube->mapstr[i] == '\n')
+		if (cube->p.mapstr[i] == '\n')
 			k++;
-		while (cube->mapstr[i] && cube->mapstr[i] == ' ')
+		while (cube->p.mapstr[i] && cube->p.mapstr[i] == ' ')
 			i++;
-		if ((cube->mapstr[i] == '1' || cube->mapstr[i] == '0')
-			&& cube->mapstr[(i) - 1] && (cube->mapstr[i - 1] == '\n'
-				|| cube->mapstr[i - 1] == ' '))
+		if ((cube->p.mapstr[i] == '1' || cube->p.mapstr[i] == '0')
+			&& cube->p.mapstr[(i) - 1] && (cube->p.mapstr[i - 1] == '\n'
+				|| cube->p.mapstr[i - 1] == ' '))
 			break ;
 	}
-	while (cube->mapstr[i])
+	while (cube->p.mapstr[i])
 	{
-		if (cube->mapstr[i++] == '\n' && cube->mapstr[i - 2] == '\n')
+		if (cube->p.mapstr[i++] == '\n' && cube->p.mapstr[i - 2] == '\n')
 		{
 			write(2, "Error\nNew line in the map\n", 27);
 			garbage(cube);
@@ -43,7 +43,7 @@ void	check_newline(t_cube *cube)
 
 void	check_lastline(t_cube *cube)
 {
-	if (cube->mapstr[ft_strlen(cube->mapstr) - 1] == '\n')
+	if (cube->p.mapstr[ft_strlen(cube->p.mapstr) - 1] == '\n')
 	{
 		write(2, "Error\nNew line in the map\n", 27);
 		garbage(cube);
@@ -59,15 +59,15 @@ void	get_map(t_cube *cube)
 	i = -1;
 	check_newline(cube);
 	check_lastline(cube);
-	tmp = ft_split(cube->mapstr, '\n');
-	while (cube->map[++i])
+	tmp = ft_split(cube->p.mapstr, '\n');
+	while (cube->p.map[++i])
 	{
-		free(cube->map[i]);
-		cube->map[i] = NULL;
+		free(cube->p.map[i]);
+		cube->p.map[i] = NULL;
 	}
 	i = -1;
 	while (tmp[++i + 6])
-		cube->map[i] = tmp[i + 6];
+		cube->p.map[i] = tmp[i + 6];
 	i = -1;
 	while (++i < 6)
 		free(tmp[i]);
