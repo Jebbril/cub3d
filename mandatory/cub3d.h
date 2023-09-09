@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/07 20:04:50 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:32:15 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,14 @@
 # define W_HEIGHT 1080
 # define TILE_SIZE 32
 # define FOV 60
+# define RADIUS 5
 # define NUM_RAYS W_WIDTH
+
+typedef struct s_pos
+{
+	float	x;
+	float	y;
+}	t_pos;
 
 typedef struct s_pasring
 {
@@ -50,14 +57,15 @@ typedef struct s_pasring
 
 typedef struct s_player
 {
-	float		x;
-	float		y;
+	t_pos		pos;
 	float		radius;
 	int			turndirection;
 	int			walkdirection;
 	float		rotationangle;
 	float		walkspeed;
 	float		turnspeed;
+	mlx_image_t	*player;
+	mlx_image_t	*line;
 }	t_player;
 
 typedef struct s_ray
@@ -78,31 +86,33 @@ typedef struct s_cube
 {
 	mlx_t		*mlx;
 	mlx_image_t	*background;
-	mlx_image_t	*player;
 	t_parsing	p;
 	t_player	pl;
 	t_ray		rays[NUM_RAYS];
 }	t_cube;
 
 // parsing
-void	parsing(int ac, char **av, t_cube *cube);
-int		check_ext(char *str, char *ext);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_strlen(char *s);
-int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	**ft_split(char *s, char c);
-void	free_matrix(char **matrice);
-void	garbage(t_cube *cube);
-void	get_info(t_cube *cube);
-void	get_map(t_cube *cube);
-void	parse_map(t_cube *cube);
-void	parse_info(t_cube *cube);
+void		parsing(int ac, char **av, t_cube *cube);
+int			check_ext(char *str, char *ext);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strlen(char *s);
+int			ft_isdigit(int c);
+int			ft_atoi(const char *str);
+char		*ft_substr(char *s, unsigned int start, size_t len);
+char		**ft_split(char *s, char c);
+void		free_matrix(char **matrice);
+void		garbage(t_cube *cube);
+void		get_info(t_cube *cube);
+void		get_map(t_cube *cube);
+void		parse_map(t_cube *cube);
+void		parse_info(t_cube *cube);
 
 // raycating
-int		raycasting(t_cube *cube);
-int		draw_background(t_cube *cube);
-int		draw_circle(t_cube *cube);
-
+int			raycasting(t_cube *cube);
+int			draw_background(t_cube *cube);
+int			draw_circle(mlx_t *mlx, mlx_image_t *img, float radius, t_pos pos);
+int			draw_line(mlx_t *mlx, mlx_image_t *img, t_pos pos1, t_pos pos2);
+mlx_image_t	*draw_rect(mlx_t *mlx, int width, int height, int color);
+int			draw_minimap(t_cube *cube);
+void		initialize(t_cube *cube);
 #endif
