@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:18:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/09 19:19:43 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/10 17:54:05 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ float	get_rotationangle(t_cube *cube)
 		}
 		j = -1;
 	}
+	return (0);
 }
 
 void	initialize(t_cube *cube)
@@ -64,6 +65,7 @@ void	initialize(t_cube *cube)
 	cube->pl.radius = RADIUS;
 	cube->pl.turndirection = 0;
 	cube->pl.walkdirection = 0;
+	cube->pl.starfdirection = 0;
 	cube->pl.rotationangle = get_rotationangle(cube);
 	cube->pl.walkspeed = 3;
 	cube->pl.turnspeed = 3 * (M_PI / 180);

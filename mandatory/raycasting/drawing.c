@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:45:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/09 17:35:11 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/10 17:13:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,56 @@ int	draw_line(mlx_t *mlx, mlx_image_t *img, t_pos pos1, t_pos pos2)
 {
 	float	dx;
 	float	dy;
-	int		i;
-	int		j;
+	int		sx;
+	int		sy;
+	float	err;
+	int		e2;
+	float	ox;
+	float	oy;
 
-	dx = fabsf(pos1.x - pos2.x);
-	dy = fabsf(pos1.y - pos2.y);
-	i = -1;
+	ox = pos1.x;
+	oy = pos1.y;
+	dx = fabsf(pos2.x - pos1.x);
+	dy = fabsf(pos2.y - pos1.y);
+	sx = pos1.x < pos2.x ? 1 : -1;
+	sy = pos1.y < pos2.x ? 1 : -1;
+	err = (dx > dy ? dx : -dy) / 2;
 	img = mlx_new_image(mlx, dx, dy);
 	if (!img)
 		return (1);
-	while (++i < dx)
+	
+	while (1)
 	{
-		j = dy * i / dx;
-		mlx_put_pixel(img, i, j, 0xFFFFFFFF);
+		mlx_put_pixel(img, pos1.x, pos1.y, 0x20AA15FF);
+		if ((int)pos1.x == (int)pos2.x && (int)pos1.y == (int)pos2.y)
+			break;
+		e2 = err;
+		if (e2 > -dx)
+		{
+			err -= dy;
+			pos1.x += sx;
+		}
+		if (e2 < dy)
+		{
+			err += dx;
+			pos1.y += sy;
+		}
 	}
-	mlx_image_to_window(mlx, img, pos1.x + RADIUS, pos1.y + RADIUS);
+	if (ox < pos2.x)
+	{
+		if (oy < pos2.y)
+			mlx_image_to_window(mlx, img, ox + RADIUS, oy + RADIUS);
+		else
+			mlx_image_to_window(mlx, img, ox + RADIUS, pos2.y + RADIUS);
+	}
+	else
+	{
+		if (oy < pos2.y)
+			mlx_image_to_window(mlx, img, pos2.x + RADIUS, oy + RADIUS);
+		else
+			mlx_image_to_window(mlx, img, pos2.x + RADIUS, pos2.y + RADIUS);
+	}
+	// mlx_image_to_window(mlx, img, ox + RADIUS, oy + RADIUS);
 	return (0);
 }
 

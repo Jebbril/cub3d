@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/09 18:32:15 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/10 18:01:04 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_player
 	float		radius;
 	int			turndirection;
 	int			walkdirection;
+	int			starfdirection;
 	float		rotationangle;
 	float		walkspeed;
 	float		turnspeed;
@@ -86,6 +87,8 @@ typedef struct s_cube
 {
 	mlx_t		*mlx;
 	mlx_image_t	*background;
+	mlx_image_t	*wall;
+	mlx_image_t	*floor;
 	t_parsing	p;
 	t_player	pl;
 	t_ray		rays[NUM_RAYS];
@@ -115,4 +118,15 @@ int			draw_line(mlx_t *mlx, mlx_image_t *img, t_pos pos1, t_pos pos2);
 mlx_image_t	*draw_rect(mlx_t *mlx, int width, int height, int color);
 int			draw_minimap(t_cube *cube);
 void		initialize(t_cube *cube);
+void		move_up(t_cube *cube, mlx_key_data_t keydata);
+void		move_down(t_cube *cube, mlx_key_data_t keydata);
+void		move_right(t_cube *cube, mlx_key_data_t keydata);
+void		move_left(t_cube *cube, mlx_key_data_t keydata);
+void		turn_right(t_cube *cube, mlx_key_data_t keydata);
+void		turn_left(t_cube *cube, mlx_key_data_t keydata);
+void		update(t_cube *cube);
+void		render(t_cube *cube);
+
+// utils
+int			has_wall(t_cube *cube, float x, float y);
 #endif
