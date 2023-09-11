@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/09/10 18:01:18 by orakib           ###   ########.fr        #
+#    Updated: 2023/09/11 17:50:54 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_uti
 		mandatory/parsing/ft_atoi.c mandatory/parsing/ft_isdigit.c \
 		mandatory/raycasting/raycasting.c mandatory/raycasting/background.c mandatory/raycasting/drawing.c \
 		mandatory/raycasting/minimap.c mandatory/raycasting/initialize.c mandatory/raycasting/utils.c \
-		mandatory/raycasting/moves.c mandatory/raycasting/update.c mandatory/raycasting/moves2.c
+		mandatory/raycasting/moves.c mandatory/raycasting/update.c mandatory/raycasting/moves2.c \
+		
 
 
 BNS_SRC = 
@@ -33,7 +34,7 @@ BNS_HEADER =
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

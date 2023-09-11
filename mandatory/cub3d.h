@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/10 18:01:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/11 20:05:00 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ typedef struct s_player
 	float		rotationangle;
 	float		walkspeed;
 	float		turnspeed;
-	mlx_image_t	*player;
-	mlx_image_t	*line;
 }	t_player;
 
 typedef struct s_ray
@@ -87,8 +85,7 @@ typedef struct s_cube
 {
 	mlx_t		*mlx;
 	mlx_image_t	*background;
-	mlx_image_t	*wall;
-	mlx_image_t	*floor;
+	mlx_image_t	*img;
 	t_parsing	p;
 	t_player	pl;
 	t_ray		rays[NUM_RAYS];
@@ -113,9 +110,9 @@ void		parse_info(t_cube *cube);
 // raycating
 int			raycasting(t_cube *cube);
 int			draw_background(t_cube *cube);
-int			draw_circle(mlx_t *mlx, mlx_image_t *img, float radius, t_pos pos);
-int			draw_line(mlx_t *mlx, mlx_image_t *img, t_pos pos1, t_pos pos2);
-mlx_image_t	*draw_rect(mlx_t *mlx, int width, int height, int color);
+void		draw_disc(t_cube *cube, int color, float radius);
+void		draw_line(t_cube *cube, int	color, t_pos p0, t_pos p1);
+void		draw_minirect(t_cube *cube, float x, float y, int color);
 int			draw_minimap(t_cube *cube);
 void		initialize(t_cube *cube);
 void		move_up(t_cube *cube, mlx_key_data_t keydata);
@@ -129,4 +126,5 @@ void		render(t_cube *cube);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);
+float		normalize_angle(float angle);
 #endif

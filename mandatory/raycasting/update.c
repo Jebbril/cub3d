@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/10 18:10:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/11 20:02:56 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 void	update(t_cube *cube)
 {
 	float	movestep;
+	float	starfstep;
 	float	newx;
 	float	newy;
 
 	cube->pl.rotationangle += cube->pl.turndirection * cube->pl.turnspeed;
+	cube->pl.rotationangle = normalize_angle(cube->pl.rotationangle);
 	movestep = cube->pl.walkdirection * cube->pl.walkspeed;
-	newx = cube->pl.pos.x + cos(cube->pl.rotationangle) * movestep;
-	newy = cube->pl.pos.y + sin(cube->pl.rotationangle) * movestep;
-	if (!has_wall(cube, newx, newy) && 
-		!has_wall(cube, newx, newy))
+	starfstep = cube->pl.starfdirection * cube->pl.walkspeed;
+	newx = cube->pl.pos.x + cos(cube->pl.rotationangle) * movestep
+		+ sin(cube->pl.rotationangle) * starfstep;
+	newy = cube->pl.pos.y + sin(cube->pl.rotationangle) * movestep
+		+ cos(cube->pl.rotationangle) * starfstep;
+	if (!has_wall(cube, newx, newy))
 	{
 		cube->pl.pos.x = newx;
 		cube->pl.pos.y = newy;
@@ -32,15 +36,15 @@ void	update(t_cube *cube)
 
 void	render(t_cube *cube)
 {
-	t_pos	pos;
+	t_pos	p;
 
-	pos.x = cube->pl.pos.x + cos(cube->pl.rotationangle) * 60;
-	pos.y = cube->pl.pos.y + sin(cube->pl.rotationangle) * 60;
-	// draw_minimap(cube);
-	draw_circle(cube->mlx, cube->pl.player, cube->pl.radius, cube->pl.pos);
-	draw_line(cube->mlx, cube->pl.line, cube->pl.pos, pos);
-	// mlx_delete_image(cube->mlx, cube->floor);
-	// mlx_delete_image(cube->mlx, cube->wall);
-	mlx_delete_image(cube->mlx, cube->pl.line);
-	mlx_delete_image(cube->mlx, cube->pl.player);
+	p.x = cube->pl.pos.x + cos(cube->pl.rotationangle) * 60;
+	p.y = cube->pl.pos.y + sin(cube->pl.rotationangle) * 60;
+	if (cube->img)
+		mlx_delete_image(cube->mlx, cube->img);
+	cube->img = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
+	draw_minimap(cube);
+	draw_disc(cube, 0x00FFAAFF, cube->pl.radius);
+	draw_line(cube, 0x00FFAAFF, cube->pl.pos, p);
+	mlx_image_to_window(cube->mlx, cube->img, 0, 0);
 }

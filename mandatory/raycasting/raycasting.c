@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:32:26 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/10 18:08:53 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/11 19:35:48 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	rendering(void *param)
 	t_cube	*cube;
 
 	cube = param;
-	printf("%d   %d   %d\n", cube->pl.walkdirection, cube->pl.starfdirection, cube->pl.turndirection);
+	printf("%d   %d   %d   %f\n", cube->pl.walkdirection, cube->pl.starfdirection,
+	 cube->pl.turndirection, cube->pl.rotationangle);
 	update(cube);
 	render(cube);
 }
@@ -51,14 +52,6 @@ int	raycasting(t_cube *cube)
 	if (draw_background(cube))
 		return (1);
 	initialize(cube);
-	draw_minimap(cube);
-	// t_pos p1,p2;
-	// p1.x = 10;
-	// p1.y = 10;
-	// p2.x = 50;
-	// p2.y = 50;
-	// mlx_image_t *img = NULL;
-	// draw_line(cube->mlx, img, p1, p2);
 	mlx_key_hook(cube->mlx, key_func, cube);
 	mlx_loop_hook(cube->mlx, rendering, cube);
 	mlx_loop(cube->mlx);

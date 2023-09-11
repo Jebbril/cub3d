@@ -1,37 +1,35 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/home/orakib/Desktop/cub3d/MLX42/lib/glad/glad.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/lib/glad/glad.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/lib/png/lodepng.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/lib/png/lodepng.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/build/mlx_frag_shader.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/mlx_frag_shader.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/build/mlx_vert_shader.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/mlx_vert_shader.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/font/mlx_font.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/font/mlx_font.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_cursor.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_cursor.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_exit.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_exit.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_images.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_images.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_init.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_init.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_keys.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_keys.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_loop.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_loop.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_monitor.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_monitor.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_mouse.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_mouse.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_put_pixel.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_put_pixel.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/mlx_window.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/mlx_window.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/textures/mlx_png.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/textures/mlx_png.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/textures/mlx_texture.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/textures/mlx_xpm42.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/textures/mlx_xpm42.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/utils/mlx_compare.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/utils/mlx_compare.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/utils/mlx_error.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/utils/mlx_error.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/utils/mlx_list.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/utils/mlx_list.c.o"
-  "/home/orakib/Desktop/cub3d/MLX42/src/utils/mlx_utils.c" "/home/orakib/Desktop/cub3d/MLX42/build/CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../include"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/orakib/Desktop/cub3d/MLX42/lib/glad/glad.c" "CMakeFiles/mlx42.dir/lib/glad/glad.c.o" "gcc" "CMakeFiles/mlx42.dir/lib/glad/glad.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/lib/png/lodepng.c" "CMakeFiles/mlx42.dir/lib/png/lodepng.c.o" "gcc" "CMakeFiles/mlx42.dir/lib/png/lodepng.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/build/mlx_frag_shader.c" "CMakeFiles/mlx42.dir/mlx_frag_shader.c.o" "gcc" "CMakeFiles/mlx42.dir/mlx_frag_shader.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/build/mlx_vert_shader.c" "CMakeFiles/mlx42.dir/mlx_vert_shader.c.o" "gcc" "CMakeFiles/mlx42.dir/mlx_vert_shader.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/font/mlx_font.c" "CMakeFiles/mlx42.dir/src/font/mlx_font.c.o" "gcc" "CMakeFiles/mlx42.dir/src/font/mlx_font.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_cursor.c" "CMakeFiles/mlx42.dir/src/mlx_cursor.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_cursor.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_exit.c" "CMakeFiles/mlx42.dir/src/mlx_exit.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_exit.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_images.c" "CMakeFiles/mlx42.dir/src/mlx_images.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_images.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_init.c" "CMakeFiles/mlx42.dir/src/mlx_init.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_init.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_keys.c" "CMakeFiles/mlx42.dir/src/mlx_keys.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_keys.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_loop.c" "CMakeFiles/mlx42.dir/src/mlx_loop.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_loop.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_monitor.c" "CMakeFiles/mlx42.dir/src/mlx_monitor.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_monitor.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_mouse.c" "CMakeFiles/mlx42.dir/src/mlx_mouse.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_mouse.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_put_pixel.c" "CMakeFiles/mlx42.dir/src/mlx_put_pixel.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_put_pixel.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/mlx_window.c" "CMakeFiles/mlx42.dir/src/mlx_window.c.o" "gcc" "CMakeFiles/mlx42.dir/src/mlx_window.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/textures/mlx_png.c" "CMakeFiles/mlx42.dir/src/textures/mlx_png.c.o" "gcc" "CMakeFiles/mlx42.dir/src/textures/mlx_png.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/textures/mlx_texture.c" "CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o" "gcc" "CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/textures/mlx_xpm42.c" "CMakeFiles/mlx42.dir/src/textures/mlx_xpm42.c.o" "gcc" "CMakeFiles/mlx42.dir/src/textures/mlx_xpm42.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/utils/mlx_compare.c" "CMakeFiles/mlx42.dir/src/utils/mlx_compare.c.o" "gcc" "CMakeFiles/mlx42.dir/src/utils/mlx_compare.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/utils/mlx_error.c" "CMakeFiles/mlx42.dir/src/utils/mlx_error.c.o" "gcc" "CMakeFiles/mlx42.dir/src/utils/mlx_error.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/utils/mlx_list.c" "CMakeFiles/mlx42.dir/src/utils/mlx_list.c.o" "gcc" "CMakeFiles/mlx42.dir/src/utils/mlx_list.c.o.d"
+  "/Users/orakib/Desktop/cub3d/MLX42/src/utils/mlx_utils.c" "CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o" "gcc" "CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o.d"
   )
 
 # Targets to which this target links.

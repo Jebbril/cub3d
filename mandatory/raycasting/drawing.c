@@ -5,112 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 19:45:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/10 17:13:17 by orakib           ###   ########.fr       */
+/*   Created: 2023/09/11 16:26:24 by orakib            #+#    #+#             */
+/*   Updated: 2023/09/11 20:03:13 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	draw_circle(mlx_t *mlx, mlx_image_t *img, float radius, t_pos pos)
+void	my_put_pixel(t_cube *cube, float x, float y, int color)
 {
-	double	x1;
-	double	y1;
-	double	min_angle;
-	double	angle;
-
-	img = mlx_new_image(mlx, radius * 2, radius * 2);
-	if (!img)
-		return (1);
-	angle = 0;
-	min_angle = acos(1 - (1 / radius));
-	while (angle <= 360)
+	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
 	{
-		x1 = radius * cos(angle);
-		y1 = radius * sin(angle);
-		mlx_put_pixel(img, radius + x1, radius + y1, 0x20AA15FF);
-		mlx_put_pixel(img, radius, radius, 0x000000FF);
-		angle += min_angle;
+		mlx_put_pixel(cube->img, x, y, color);
 	}
-	mlx_image_to_window(mlx, img, pos.x, pos.y);
-	return (0);
 }
 
-int	draw_line(mlx_t *mlx, mlx_image_t *img, t_pos pos1, t_pos pos2)
+void	draw_disc(t_cube *cube, int color, float radius)
 {
-	float	dx;
-	float	dy;
-	int		sx;
-	int		sy;
-	float	err;
-	int		e2;
-	float	ox;
-	float	oy;
+	t_pos	p0;
+	t_pos	p;
 
-	ox = pos1.x;
-	oy = pos1.y;
-	dx = fabsf(pos2.x - pos1.x);
-	dy = fabsf(pos2.y - pos1.y);
-	sx = pos1.x < pos2.x ? 1 : -1;
-	sy = pos1.y < pos2.x ? 1 : -1;
-	err = (dx > dy ? dx : -dy) / 2;
-	img = mlx_new_image(mlx, dx, dy);
-	if (!img)
-		return (1);
-	
-	while (1)
+	p.x = cube->pl.pos.x;
+	p.y = cube->pl.pos.y;
+	p0.y = -radius;
+	while (p0.y <= radius)
 	{
-		mlx_put_pixel(img, pos1.x, pos1.y, 0x20AA15FF);
-		if ((int)pos1.x == (int)pos2.x && (int)pos1.y == (int)pos2.y)
-			break;
-		e2 = err;
-		if (e2 > -dx)
+		p0.x = -radius;
+		while (p0.x <= radius)
 		{
-			err -= dy;
-			pos1.x += sx;
+			if ((p0.x * p0.x) + p0.y * p0.y <= radius * radius)
+				my_put_pixel(cube, p0.x + p.x, p0.y + p.y, color);
+			p0.x++;
 		}
-		if (e2 < dy)
-		{
-			err += dx;
-			pos1.y += sy;
-		}
+		p0.y++;
 	}
-	if (ox < pos2.x)
-	{
-		if (oy < pos2.y)
-			mlx_image_to_window(mlx, img, ox + RADIUS, oy + RADIUS);
-		else
-			mlx_image_to_window(mlx, img, ox + RADIUS, pos2.y + RADIUS);
-	}
-	else
-	{
-		if (oy < pos2.y)
-			mlx_image_to_window(mlx, img, pos2.x + RADIUS, oy + RADIUS);
-		else
-			mlx_image_to_window(mlx, img, pos2.x + RADIUS, pos2.y + RADIUS);
-	}
-	// mlx_image_to_window(mlx, img, ox + RADIUS, oy + RADIUS);
-	return (0);
 }
 
-mlx_image_t	*draw_rect(mlx_t *mlx, int width, int height, int color)
+void	draw_line(t_cube *cube, int color, t_pos p0, t_pos p1)
 {
-	mlx_image_t	*img;
-	int			i;
-	int			j;
+	int		i;
+	float	xinc;
+	float	yinc;
+	float	steps;
 
-	img = mlx_new_image(mlx, width, height);
-	if (!img)
-		return (NULL);
+	steps = fmax(fabs(p1.x - p0.x), fabs(p1.y - p0.y));
+	xinc = (p1.x - p0.x) / steps;
+	yinc = (p1.y - p0.y) / steps;
+	i = -1;
+	while (++i <= steps)
+	{
+		my_put_pixel(cube, round(p0.x), round(p0.y), color);
+		p0.x += xinc;
+		p0.y += yinc;
+	}
+}
+
+void	draw_minirect(t_cube *cube, float x, float y, int color)
+{
+	int	i;
+	int	j;
+
 	i = -1;
 	j = -1;
-	while (++i < width)
+	while (++i < TILE_SIZE)
 	{
-		while (++j < height)
+		while (++j < TILE_SIZE)
 		{
-			mlx_put_pixel(img, i, j, color);
+			my_put_pixel(cube, j + x, i + y, color);
 		}
 		j = -1;
 	}
-	return (img);
 }

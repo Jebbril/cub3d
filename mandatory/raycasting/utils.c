@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/10 11:36:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/11 19:37:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,12 @@ int	has_wall(t_cube *cube, float x, float y)
 		return (1);
 	else
 		return (0);
+}
+
+float	normalize_angle(float angle)
+{
+	angle = fmod(angle, 2 * M_PI);
+	if (angle < 0)
+		angle = (2 * M_PI) + angle;
+	return (angle);
 }
