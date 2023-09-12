@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 20:02:56 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/12 18:43:46 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	render(t_cube *cube)
 	draw_minimap(cube);
 	draw_disc(cube, 0x00FFAAFF, cube->pl.radius);
 	draw_line(cube, 0x00FFAAFF, cube->pl.pos, p);
+	cast_rays(cube);
 	mlx_image_to_window(cube->mlx, cube->img, 0, 0);
 }

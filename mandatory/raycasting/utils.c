@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 19:37:06 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/12 18:02:26 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	has_wall(t_cube *cube, float x, float y)
 		return (1);
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
+	printf("%d  %d\n", mapgridindexx, mapgridindexy);
 	if (cube->p.map[mapgridindexy][mapgridindexx] == '1')
 		return (1);
 	else
@@ -33,4 +34,9 @@ float	normalize_angle(float angle)
 	if (angle < 0)
 		angle = (2 * M_PI) + angle;
 	return (angle);
+}
+
+float	distancexy(float x1, float y1, float x2, float y2)
+{
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }

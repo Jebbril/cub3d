@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:23:39 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 18:11:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:53:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,4 @@ void	parsing(int ac, char **av, t_cube *cube)
 	get_map(cube);
 	parse_map(cube);
 	parse_info(cube);
-	printf("%s\n", cube->p.so);
 }

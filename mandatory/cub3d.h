@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 20:05:00 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:55:33 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 # include <string.h>
 # include <errno.h>
 # include <math.h>
+# include <limits.h>
 # include <stdlib.h>
 # include "../gnl/get_next_line.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
+# define TRUE 1
+# define FALSE 0
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
 # define TILE_SIZE 32
@@ -81,6 +84,26 @@ typedef struct s_ray
 	int			wallhitcontent;
 }	t_ray;
 
+typedef struct s_cast
+{
+	float	xintercept;
+	float	yintercept;
+	float	xstep;
+	float	ystep;
+	int		foundhwallhit;
+	float	hwallhitx;
+	float	hwallhity;
+	float	nexthtouchx;
+	float	nexthtouchy;
+	float	foundvwallhit;
+	float	vwallhitx;
+	float	vwallhity;
+	float	nextvtouchx;
+	float	nextvtouchy;
+	float	hhitdist;
+	float	vhitdist;
+}	t_cast;
+
 typedef struct s_cube
 {
 	mlx_t		*mlx;
@@ -111,9 +134,10 @@ void		parse_info(t_cube *cube);
 int			raycasting(t_cube *cube);
 int			draw_background(t_cube *cube);
 void		draw_disc(t_cube *cube, int color, float radius);
-void		draw_line(t_cube *cube, int	color, t_pos p0, t_pos p1);
+void		draw_line(t_cube *cube, int color, t_pos p0, t_pos p1);
 void		draw_minirect(t_cube *cube, float x, float y, int color);
 int			draw_minimap(t_cube *cube);
+void		cast_rays(t_cube *cube);
 void		initialize(t_cube *cube);
 void		move_up(t_cube *cube, mlx_key_data_t keydata);
 void		move_down(t_cube *cube, mlx_key_data_t keydata);
@@ -127,4 +151,5 @@ void		render(t_cube *cube);
 // utils
 int			has_wall(t_cube *cube, float x, float y);
 float		normalize_angle(float angle);
+float		distancexy(float x1, float y1, float x2, float y2);
 #endif

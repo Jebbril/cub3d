@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:18:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 18:18:39 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/12 18:12:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,32 @@ float	get_rotationangle(t_cube *cube)
 	return (0);
 }
 
+void	init_rays(t_cube *cube)
+{
+	int		i;
+	float	rayangle;
+	float	inc;
+
+	i = -1;
+	rayangle = cube->pl.rotationangle - (FOV / 2);
+	inc = FOV / (float)NUM_RAYS;
+	while (++i < NUM_RAYS)
+	{
+		cube->rays[i].rayangle = rayangle;
+		cube->rays[i].wallhitx = 0;
+		cube->rays[i].wallhity = 0;
+		cube->rays[i].distance = 0;
+		cube->rays[i].washitvertical = FALSE;
+		cube->rays[i].israyfacingdown = cube->rays[i].rayangle > 0
+			&& cube->rays[i].rayangle < M_PI;
+		cube->rays[i].israyfacingup = !cube->rays[i].israyfacingdown;
+		cube->rays[i].israyfacingright = cube->rays[i].rayangle < M_PI * 0.5
+			|| cube->rays[i].rayangle > 1.5 * M_PI;
+		cube->rays[i].israyfacingleft = !cube->rays[i].israyfacingright;
+		rayangle += inc;
+	}
+}
+
 void	initialize(t_cube *cube)
 {
 	set_pos(cube);
@@ -70,4 +96,5 @@ void	initialize(t_cube *cube)
 	cube->pl.walkspeed = 2;
 	cube->pl.turnspeed = 2 * (M_PI / 180);
 	cube->img = NULL;
+	init_rays(cube);
 }
