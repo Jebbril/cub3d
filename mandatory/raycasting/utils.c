@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/12 18:02:26 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/13 21:33:32 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	has_wall(t_cube *cube, float x, float y)
 		return (1);
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
-	printf("%d  %d\n", mapgridindexx, mapgridindexy);
 	if (cube->p.map[mapgridindexy][mapgridindexx] == '1')
 		return (1);
 	else

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:03:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/12 18:27:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/13 21:32:28 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	verti_intersection(t_cube *cube, t_cast *v, int i)
 	if (cube->rays->israyfacingright)
 		v->xintercept += TILE_SIZE;
 	v->yintercept = cube->pl.pos.y + (v->xintercept - cube->pl.pos.x)
-		/ tan(cube->rays[i].rayangle);
+		* tan(cube->rays[i].rayangle);
 	v->xstep = TILE_SIZE;
 	if (cube->rays[i].israyfacingleft)
 		v->xstep *= -1;
@@ -106,12 +106,12 @@ void	choose_dist(t_cube *cube, t_cast *v, int i)
 		v->hhitdist = distancexy(cube->pl.pos.x, cube->pl.pos.y,
 				v->hwallhitx, v->hwallhity);
 	else
-		v->hhitdist = MAXFLOAT;
+		v->hhitdist = INT_MAX;
 	if (v->foundvwallhit)
 		v->vhitdist = distancexy(cube->pl.pos.x, cube->pl.pos.y,
 				v->vwallhitx, v->vwallhity);
 	else
-		v->hhitdist = MAXFLOAT;
+		v->hhitdist = INT_MAX;
 	if (v->vhitdist < v->hhitdist)
 	{
 		cube->rays[i].wallhitx = v->vwallhitx;
@@ -141,13 +141,19 @@ void	cast_rays(t_cube *cube)
 {
 	int		i;
 	t_cast	v;
+	float	rayangle;
+	float	inc;
 
 	i = -1;
+	rayangle = cube->pl.rotationangle - (cube->fov / 2);
+	inc = cube->fov / (float)NUM_RAYS;
 	while (++i < NUM_RAYS)
 	{
+		init_ray(cube, i, rayangle);
 		horiz_intersection(cube, &v, i);
 		verti_intersection(cube, &v, i);
 		choose_dist(cube, &v, i);
 		render_ray(cube, i);
+		rayangle += inc;
 	}
 }
