@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/09/14 20:58:27 by orakib           ###   ########.fr        #
+#    Updated: 2023/09/14 21:36:31 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_uti
 		mandatory/raycasting/raycasting.c mandatory/raycasting/background.c mandatory/raycasting/drawing.c \
 		mandatory/raycasting/minimap.c mandatory/raycasting/initialize.c mandatory/raycasting/utils.c \
 		mandatory/raycasting/moves.c mandatory/raycasting/update.c mandatory/raycasting/moves2.c \
-		mandatory/raycasting/cast_rays.c mandatory/raycasting/cast_rays2.c
+		mandatory/raycasting/cast_rays.c mandatory/raycasting/cast_rays2.c mandatory/raycasting/render_walls.c \
 		
 
 

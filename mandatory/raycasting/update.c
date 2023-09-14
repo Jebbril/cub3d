@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 20:54:24 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 21:49:09 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void	render(t_cube *cube)
 	if (cube->img)
 		mlx_delete_image(cube->mlx, cube->img);
 	cube->img = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
+	cast_rays(cube);
+	render_walls(cube);
 	draw_minimap(cube);
 	draw_disc(cube, 0x00FFAAFF, cube->pl.radius);
 	draw_line(cube, 0x00FFAAFF, cube->pl.pos, p);
-	cast_rays(cube);
+	render_rays(cube);
 	mlx_image_to_window(cube->mlx, cube->img, 0, 0);
 }

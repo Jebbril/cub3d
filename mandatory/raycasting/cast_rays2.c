@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:57:05 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 20:57:36 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 21:48:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,16 @@ void	choose_dist(t_cube *cube, t_cast *v, int i)
 	}
 }
 
-void	render_ray(t_cube *cube, int i)
+void	render_rays(t_cube *cube)
 {
+	int	i;
 	t_pos	p;
 
-	p.x = cube->rays[i].wallhitx;
-	p.y = cube->rays[i].wallhity;
-	draw_line(cube, 0xFF0000FF, cube->pl.pos, p);
+	i = -1;
+	while (++i < NUM_RAYS)
+	{
+		p.x = cube->rays[i].wallhitx;
+		p.y = cube->rays[i].wallhity;
+		draw_line(cube, 0xFF0000FF, cube->pl.pos, p);
+	}
 }

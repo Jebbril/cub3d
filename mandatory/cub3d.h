@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 20:58:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 21:48:48 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,13 @@ void		update(t_cube *cube);
 void		render(t_cube *cube);
 void		init_ray(t_cube *cube, int i, float rayangle);
 void		choose_dist(t_cube *cube, t_cast *v, int i);
-void		render_ray(t_cube *cube, int i);
+void		render_rays(t_cube *cube);
+void		render_walls(t_cube *cube);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);
 int			has_wall2(t_cube *cube, float x, float y, t_pos p);
 float		normalize_angle(float angle);
 float		distancexy(float x1, float y1, float x2, float y2);
+void		my_put_pixel(t_cube *cube, float x, float y, int color);
 #endif
