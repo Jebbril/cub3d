@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:32:26 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 19:35:48 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/13 21:38:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	rendering(void *param)
 	t_cube	*cube;
 
 	cube = param;
-	printf("%d   %d   %d   %f\n", cube->pl.walkdirection, cube->pl.starfdirection,
-	 cube->pl.turndirection, cube->pl.rotationangle);
 	update(cube);
 	render(cube);
 }

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/13 19:46:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 20:58:04 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_cube
 	t_player	pl;
 	t_ray		rays[NUM_RAYS];
 	float		fov;
+	int			rows;
 }	t_cube;
 
 // parsing
@@ -149,9 +150,12 @@ void		turn_left(t_cube *cube, mlx_key_data_t keydata);
 void		update(t_cube *cube);
 void		render(t_cube *cube);
 void		init_ray(t_cube *cube, int i, float rayangle);
+void		choose_dist(t_cube *cube, t_cast *v, int i);
+void		render_ray(t_cube *cube, int i);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);
+int			has_wall2(t_cube *cube, float x, float y, t_pos p);
 float		normalize_angle(float angle);
 float		distancexy(float x1, float y1, float x2, float y2);
 #endif

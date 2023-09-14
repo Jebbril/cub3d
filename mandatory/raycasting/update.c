@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/12 18:43:46 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 20:54:24 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	update(t_cube *cube)
 		+ sin(cube->pl.rotationangle) * starfstep;
 	newy = cube->pl.pos.y + sin(cube->pl.rotationangle) * movestep
 		+ cos(cube->pl.rotationangle) * starfstep;
-	if (!has_wall(cube, newx, newy))
+	if (!has_wall2(cube, newx, newy, cube->pl.pos))
 	{
 		cube->pl.pos.x = newx;
 		cube->pl.pos.y = newy;

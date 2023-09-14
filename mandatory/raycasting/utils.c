@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/13 21:33:32 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/14 20:54:17 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,30 @@ int	has_wall(t_cube *cube, float x, float y)
 		return (1);
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
+	if (mapgridindexy >= cube->rows
+		|| mapgridindexx >= ft_strlen(cube->p.map[mapgridindexy]))
+		return (1);
 	if (cube->p.map[mapgridindexy][mapgridindexx] == '1')
+		return (1);
+	else
+		return (0);
+}
+
+int	has_wall2(t_cube *cube, float x, float y, t_pos p)
+{
+	int	mapgridindexx;
+	int	mapgridindexy;
+	int	mapgridindexx1;
+	int	mapgridindexy1;
+
+	if (x < 0 || x > W_WIDTH || y < 0 || y > W_HEIGHT)
+		return (1);
+	mapgridindexx = floor(x / TILE_SIZE);
+	mapgridindexy = floor(y / TILE_SIZE);
+	mapgridindexx1 = floor(p.x / TILE_SIZE);
+	mapgridindexy1 = floor(p.y / TILE_SIZE);
+	if (cube->p.map[mapgridindexy][mapgridindexx] == '1'
+		|| cube->p.map[mapgridindexy1][mapgridindexx] == '1')
 		return (1);
 	else
 		return (0);
