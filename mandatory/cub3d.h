@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 21:48:48 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 22:34:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define FALSE 0
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
-# define TILE_SIZE 32
+# define TILE_SIZE 16
 # define FOV 60
 # define RADIUS 5
 # define NUM_RAYS W_WIDTH
@@ -104,16 +104,32 @@ typedef struct s_cast
 	float	vhitdist;
 }	t_cast;
 
+typedef struct s_walls
+{
+	float	correct_dist;
+	float	dist_projplane;
+	float	projwall_height;
+	int		wallstrip_height;
+	int		walltop_pixel;
+	int		wallbottom_pixel;
+	int		y;
+	int		i;
+}	t_walls;
+
 typedef struct s_cube
 {
-	mlx_t		*mlx;
-	mlx_image_t	*background;
-	mlx_image_t	*img;
-	t_parsing	p;
-	t_player	pl;
-	t_ray		rays[NUM_RAYS];
-	float		fov;
-	int			rows;
+	mlx_t			*mlx;
+	mlx_image_t		*background;
+	mlx_image_t		*img;
+	t_parsing		p;
+	t_player		pl;
+	t_ray			rays[NUM_RAYS];
+	float			fov;
+	int				rows;
+	mlx_texture_t	*no;
+	mlx_texture_t	*so;
+	mlx_texture_t	*ea;
+	mlx_texture_t	*we;
 }	t_cube;
 
 // parsing
@@ -153,6 +169,10 @@ void		init_ray(t_cube *cube, int i, float rayangle);
 void		choose_dist(t_cube *cube, t_cast *v, int i);
 void		render_rays(t_cube *cube);
 void		render_walls(t_cube *cube);
+
+// textures
+int			load_pngs(t_cube *cube);
+int			get_textpixel(t_cube *cube, t_walls *v, int side);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);

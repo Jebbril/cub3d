@@ -6,46 +6,50 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 21:03:08 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 22:43:05 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 21:44:27 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	init_values(t_cube *cube, t_walls *v)
+{
+	v->correct_dist = cube->rays[v->i].distance
+		* cos(cube->rays[v->i].rayangle - cube->pl.rotationangle);
+	v->dist_projplane = (W_WIDTH / 2) / tan(cube->fov / 2);
+	v->projwall_height = (TILE_SIZE / v->correct_dist) * v->dist_projplane;
+	v->wallstrip_height = (int)v->projwall_height;
+	v->walltop_pixel = (W_HEIGHT / 2) - (v->wallstrip_height / 2);
+	if (v->walltop_pixel < 0)
+		v->walltop_pixel = 0;
+	v->wallbottom_pixel = (W_HEIGHT / 2) + (v->wallstrip_height / 2);
+	if (v->wallbottom_pixel > W_HEIGHT)
+		v->wallbottom_pixel = W_HEIGHT;
+	v->y = v->walltop_pixel;
+}
+
 void	render_walls(t_cube *cube)
 {
-	int	i;
+	t_walls	v;
 
-	i = -1;
-	while (++i < NUM_RAYS)
+	v.i = -1;
+	while (++v.i < NUM_RAYS)
 	{
-		float correct_dist = cube->rays[i].distance * cos(cube->rays[i].rayangle - cube->pl.rotationangle);
-		float dist_projplane = (W_WIDTH / 2) / tan(cube->fov / 2);
-		float projwall_height = (TILE_SIZE / correct_dist) * dist_projplane;
-		int wallstrip_height = (int)projwall_height;
-		int walltop_pixel = (W_HEIGHT / 2) - (wallstrip_height / 2);
-		walltop_pixel = walltop_pixel < 0 ? 0 : walltop_pixel;
-		int wallbottom_pixel = (W_HEIGHT / 2) + (wallstrip_height / 2);
-		wallbottom_pixel = wallbottom_pixel > W_HEIGHT ? W_HEIGHT : wallbottom_pixel;
-		int	y = walltop_pixel;
-		while (y++ < wallbottom_pixel)
+		init_values(cube, &v);
+		while (v.y++ < v.wallbottom_pixel)
 		{
-			if (cube->rays[i].israyfacingup && cube->rays[i].israyfacingright && cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0xFFFFFFFF);
-			else if (cube->rays[i].israyfacingup && cube->rays[i].israyfacingright && !cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0x0000FFFF);
-			else if (cube->rays[i].israyfacingup && cube->rays[i].israyfacingleft && cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0xFF0000FF);
-			else if (cube->rays[i].israyfacingup && cube->rays[i].israyfacingleft && !cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0x0000FFFF);
-			else if (cube->rays[i].israyfacingdown && cube->rays[i].israyfacingright && cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0xFFFFFFFF);
-			else if (cube->rays[i].israyfacingdown && cube->rays[i].israyfacingright && !cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0x00FF00FF);
-			else if (cube->rays[i].israyfacingdown && cube->rays[i].israyfacingleft && cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0xFF0000FF);
-			else if (cube->rays[i].israyfacingdown && cube->rays[i].israyfacingleft && !cube->rays[i].washitvertical)
-				my_put_pixel(cube, i, y, 0x00FF00FF);
+			if (cube->rays[v.i].israyfacingright
+				&& cube->rays[v.i].washitvertical)
+				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 1));
+			else if (cube->rays[v.i].israyfacingup
+				&& !cube->rays[v.i].washitvertical)
+				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 1));
+			else if (cube->rays[v.i].israyfacingleft
+				&& cube->rays[v.i].washitvertical)
+				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 1));
+			else if (cube->rays[v.i].israyfacingdown
+				&& !cube->rays[v.i].washitvertical)
+				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 1));
 		}
 	}
 }

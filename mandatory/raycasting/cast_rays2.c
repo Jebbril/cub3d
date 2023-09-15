@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:57:05 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 21:48:35 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 18:15:29 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	choose_dist(t_cube *cube, t_cast *v, int i)
 
 void	render_rays(t_cube *cube)
 {
-	int	i;
+	int		i;
 	t_pos	p;
 
 	i = -1;

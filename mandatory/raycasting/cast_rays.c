@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:03:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 21:49:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 19:32:04 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void	cast_rays(t_cube *cube)
 		horiz_intersection(cube, &v, i);
 		verti_intersection(cube, &v, i);
 		choose_dist(cube, &v, i);
+		if (cube->rays[i].distance >= 0 && cube->rays[i].distance <= 1)
+			cube->rays[i].distance = 1;
 		rayangle += inc;
 	}
 }

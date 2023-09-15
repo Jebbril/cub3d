@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 21:49:09 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 18:52:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 void	update(t_cube *cube)
 {
 	float	movestep;
-	float	starfstep;
 	float	newx;
 	float	newy;
 
 	cube->pl.rotationangle += cube->pl.turndirection * cube->pl.turnspeed;
 	cube->pl.rotationangle = normalize_angle(cube->pl.rotationangle);
 	movestep = cube->pl.walkdirection * cube->pl.walkspeed;
-	starfstep = cube->pl.starfdirection * cube->pl.walkspeed;
-	newx = cube->pl.pos.x + cos(cube->pl.rotationangle) * movestep
-		+ sin(cube->pl.rotationangle) * starfstep;
-	newy = cube->pl.pos.y + sin(cube->pl.rotationangle) * movestep
-		+ cos(cube->pl.rotationangle) * starfstep;
+	newx = cube->pl.pos.x + cos(cube->pl.rotationangle) * movestep;
+	newy = cube->pl.pos.y + sin(cube->pl.rotationangle) * movestep;
+	if (cube->pl.starfdirection == 1)
+	{
+		newx += cos(cube->pl.rotationangle - M_PI_2) * cube->pl.walkspeed;
+		newy += sin(cube->pl.rotationangle - M_PI_2) * cube->pl.walkspeed;
+	}
+	if (cube->pl.starfdirection == -1)
+	{
+		newx += cos(cube->pl.rotationangle + M_PI_2) * cube->pl.walkspeed;
+		newy += sin(cube->pl.rotationangle + M_PI_2) * cube->pl.walkspeed;
+	}
 	if (!has_wall2(cube, newx, newy, cube->pl.pos))
 	{
 		cube->pl.pos.x = newx;

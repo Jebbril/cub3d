@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:32:26 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/13 21:38:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/15 21:43:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void	rendering(void *param)
 int	raycasting(t_cube *cube)
 {
 	cube->mlx = mlx_init(W_WIDTH, W_HEIGHT, "Cub3d", false);
+	initialize(cube);
 	if (!cube->mlx)
+		return (1);
+	if (load_pngs(cube))
 		return (1);
 	if (draw_background(cube))
 		return (1);
-	initialize(cube);
 	mlx_key_hook(cube->mlx, key_func, cube);
 	mlx_loop_hook(cube->mlx, rendering, cube);
 	mlx_loop(cube->mlx);
