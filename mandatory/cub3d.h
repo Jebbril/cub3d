@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/15 22:34:35 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 19:40:38 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ typedef struct s_walls
 	int		wallstrip_height;
 	int		walltop_pixel;
 	int		wallbottom_pixel;
+	int		top_diff;
+	int		bot_diff;
 	int		y;
 	int		i;
 }	t_walls;
@@ -130,6 +132,10 @@ typedef struct s_cube
 	mlx_texture_t	*so;
 	mlx_texture_t	*ea;
 	mlx_texture_t	*we;
+	int				**no_tab;
+	int				**so_tab;
+	int				**we_tab;
+	int				**ea_tab;
 }	t_cube;
 
 // parsing
@@ -172,12 +178,12 @@ void		render_walls(t_cube *cube);
 
 // textures
 int			load_pngs(t_cube *cube);
-int			get_textpixel(t_cube *cube, t_walls *v, int side);
+uint32_t	get_textpixel(t_cube *cube, t_walls *v, int side);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);
 int			has_wall2(t_cube *cube, float x, float y, t_pos p);
 float		normalize_angle(float angle);
 float		distancexy(float x1, float y1, float x2, float y2);
-void		my_put_pixel(t_cube *cube, float x, float y, int color);
+void		my_put_pixel(t_cube *cube, float x, float y, uint32_t color);
 #endif

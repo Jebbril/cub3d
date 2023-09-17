@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:18:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/15 21:11:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 20:02:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,10 @@ void	initialize(t_cube *cube)
 	cube->pl.starfdirection = 0;
 	cube->pl.rotationangle = get_rotationangle(cube);
 	cube->pl.walkspeed = 1;
-	cube->pl.turnspeed = 1 * (M_PI / 180);
+	cube->pl.turnspeed = 2 * (M_PI / 180);
 	cube->img = NULL;
 	cube->fov = FOV * M_PI / 180;
 	cube->rows = 0;
 	while (cube->p.map[cube->rows])
 		cube->rows++;
-	cube->no = NULL;
-	cube->so = NULL;
-	cube->ea = NULL;
-	cube->we = NULL;
 }

@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:26:24 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/11 20:03:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/16 23:39:02 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	my_put_pixel(t_cube *cube, float x, float y, int color)
+void	my_put_pixel(t_cube *cube, float x, float y, uint32_t color)
 {
 	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
 	{
