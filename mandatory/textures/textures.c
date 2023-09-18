@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:03:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 19:51:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/18 15:59:03 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-int	**convert_texture_to_color_array(mlx_texture_t *image)
+int	**get_colorarray(mlx_texture_t *image)
 {
 	int	**tab;
 	int	count;
@@ -80,9 +80,9 @@ int	load_pngs(t_cube *cube)
 	cube->we = mlx_load_png(cube->p.we);
 	if (!cube->no || !cube->so || !cube->ea || !cube->we)
 		return (1);
-	cube->no_tab = convert_texture_to_color_array(cube->no);
-	cube->so_tab = convert_texture_to_color_array(cube->so);
-	cube->ea_tab = convert_texture_to_color_array(cube->ea);
-	cube->we_tab = convert_texture_to_color_array(cube->we);
+	cube->no_tab = get_colorarray(cube->no);
+	cube->so_tab = get_colorarray(cube->so);
+	cube->ea_tab = get_colorarray(cube->ea);
+	cube->we_tab = get_colorarray(cube->we);
 	return (0);
 }
