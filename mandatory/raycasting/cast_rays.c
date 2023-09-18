@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:03:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/15 19:32:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 22:31:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	horiz_intersection2(t_cube *cube, t_cast *v, int i)
 {
-	while (v->nexthtouchx >= 0 && v->nexthtouchx <= W_WIDTH
-		&& v->nexthtouchy >= 0 && v->nexthtouchy <= W_HEIGHT)
+	while (v->nexthtouchx >= 0 && v->nexthtouchx <= cube->max_cols * TILE_SIZE
+		&& v->nexthtouchy >= 0 && v->nexthtouchy <= cube->rows * TILE_SIZE)
 	{
 		if (has_wall(cube, v->nexthtouchx, v->nexthtouchy
 				- cube->rays[i].israyfacingup))
@@ -58,8 +58,8 @@ void	horiz_intersection(t_cube *cube, t_cast *v, int i)
 
 void	verti_intersection2(t_cube *cube, t_cast *v, int i)
 {
-	while (v->nextvtouchx >= 0 && v->nextvtouchx <= W_WIDTH
-		&& v->nextvtouchy >= 0 && v->nextvtouchy <= W_HEIGHT)
+	while (v->nextvtouchx >= 0 && v->nextvtouchx <= cube->max_cols * TILE_SIZE
+		&& v->nextvtouchy >= 0 && v->nextvtouchy <= cube->rows * TILE_SIZE)
 	{
 		if (has_wall(cube, v->nextvtouchx - cube->rays[i].israyfacingleft,
 				v->nextvtouchy))

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 19:40:38 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 22:32:55 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct s_cube
 	t_ray			rays[NUM_RAYS];
 	float			fov;
 	int				rows;
+	int				max_cols;
 	mlx_texture_t	*no;
 	mlx_texture_t	*so;
 	mlx_texture_t	*ea;

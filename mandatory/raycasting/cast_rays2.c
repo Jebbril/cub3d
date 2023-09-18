@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:57:05 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/15 18:15:29 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 21:56:30 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	choose_dist(t_cube *cube, t_cast *v, int i)
 		v->hhitdist = distancexy(cube->pl.pos.x, cube->pl.pos.y,
 				v->hwallhitx, v->hwallhity);
 	else
-		v->hhitdist = INT_MAX;
+		v->hhitdist = MAXFLOAT;
 	if (v->foundvwallhit)
 		v->vhitdist = distancexy(cube->pl.pos.x, cube->pl.pos.y,
 				v->vwallhitx, v->vwallhity);
 	else
-		v->vhitdist = INT_MAX;
+		v->vhitdist = MAXFLOAT;
 	if (v->vhitdist < v->hhitdist)
 	{
 		cube->rays[i].wallhitx = v->vwallhitx;

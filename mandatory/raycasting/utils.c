@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/14 20:54:17 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 22:41:14 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	has_wall(t_cube *cube, float x, float y)
 	int	mapgridindexx;
 	int	mapgridindexy;
 
-	if (x < 0 || x > W_WIDTH || y < 0 || y > W_HEIGHT)
-		return (1);
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
 	if (mapgridindexy >= cube->rows
@@ -37,8 +35,6 @@ int	has_wall2(t_cube *cube, float x, float y, t_pos p)
 	int	mapgridindexx1;
 	int	mapgridindexy1;
 
-	if (x < 0 || x > W_WIDTH || y < 0 || y > W_HEIGHT)
-		return (1);
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = floor(y / TILE_SIZE);
 	mapgridindexx1 = floor(p.x / TILE_SIZE);

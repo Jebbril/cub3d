@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:18:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 20:02:44 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/17 22:39:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ void	initialize(t_cube *cube)
 	cube->img = NULL;
 	cube->fov = FOV * M_PI / 180;
 	cube->rows = 0;
+	cube->max_cols = 0;
 	while (cube->p.map[cube->rows])
+	{
+		if (ft_strlen(cube->p.map[cube->rows]) > cube->max_cols)
+			cube->max_cols = ft_strlen(cube->p.map[cube->rows]);
 		cube->rows++;
+	}
 }
