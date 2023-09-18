@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/09/17 20:04:11 by orakib           ###   ########.fr        #
+#    Updated: 2023/09/18 17:33:10 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 #MLX/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 NAME = cub3d
+
+BONUS = cub3d_bonus
 
 SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_utils.c gnl/get_next_line.c \
 		gnl/get_next_line_utils.c mandatory/parsing/ft_split.c mandatory/garbage.c mandatory/parsing/get_info.c \
@@ -27,11 +29,19 @@ SRC = mandatory/main.c mandatory/parsing/parsing.c mandatory/parsing/parsing_uti
 		mandatory/textures/textures.c
 
 
-BNS_SRC = 
+BNS_SRC = bonus/main.c bonus/parsing/parsing.c bonus/parsing/parsing_utils.c gnl/get_next_line.c \
+		gnl/get_next_line_utils.c bonus/parsing/ft_split.c bonus/garbage.c bonus/parsing/get_info.c \
+		bonus/parsing/get_map.c bonus/parsing/parse_map.c bonus/parsing/parse_info.c \
+		bonus/parsing/ft_atoi.c bonus/parsing/ft_isdigit.c \
+		bonus/raycasting/raycasting.c bonus/raycasting/background.c bonus/raycasting/drawing.c \
+		bonus/raycasting/minimap.c bonus/raycasting/initialize.c bonus/raycasting/utils.c \
+		bonus/raycasting/moves.c bonus/raycasting/update.c bonus/raycasting/moves2.c \
+		bonus/raycasting/cast_rays.c bonus/raycasting/cast_rays2.c bonus/raycasting/render_walls.c \
+		bonus/textures/textures.c bonus/mouse/mouse.c
 
-HEADER = cub3d.h
+HEADER = mandatory/cub3d.h
 
-BNS_HEADER = 
+BNS_HEADER = bonus/cub3d.h
 
 CC = cc
 
@@ -46,7 +56,7 @@ all: $(NAME)
 bonus: $(BONUS)
 
 $(BONUS): $(BNS_OBJ)
-	$(CC) $(CFLAGS) -o $(BONUS) $(BNS_OBJ)
+	$(CC) $(CFLAGS) -o $(BONUS) $(BNS_OBJ) MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
