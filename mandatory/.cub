@@ -1,15 +1,14 @@
-NO  	./path_to_the_north_texture
+NO ./png/  blue  wall.png
 
-			SO  ./path_to_the_south_texture    
+SO ./png/doorfinal.png
 
-WE 	   ./path_to_the_west_texture
+WE ./png/graywall.png
 
- 	EA 			 ./path_to_the_east_texture
+EA ./png/redbrick.png
 
-F 220,100,0  
+F 200,200,200
 
-
-C 225,30,0   
+C 100,100,100 
 
 
 		1111111111111111111111111

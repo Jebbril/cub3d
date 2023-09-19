@@ -6,14 +6,18 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/15 21:49:28 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/19 21:37:57 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	get_info3(char **dir, char **str, char *id, int start)
+int	get_info3(char **dir, char **str, char *id, char *path)
 {
+	int	i;
+	int	j;
+
+	i = 0;
 	if (str[0] && !ft_strncmp(str[0], id, 3) && str[1])
 	{
 		if (*dir)
@@ -22,7 +26,16 @@ int	get_info3(char **dir, char **str, char *id, int start)
 			*dir = NULL;
 			return (0);
 		}
-		*dir = ft_substr(str[1], start, ft_strlen(str[1]));
+		while (path[i] && path[i] == ' ')
+			i++;
+		while (path[i] && path[i] != ' ')
+			i++;
+		while (path[i] && path[i] == ' ')
+			i++;
+		j = ft_strlen(path);
+		while (path[j - 1] == ' ')
+			j--;
+		*dir = ft_substr(path, i, j - i);
 		return (1);
 	}
 	return (0);
@@ -35,17 +48,17 @@ int	get_info2(t_cube *cube, int i)
 
 	ret = 0;
 	str = ft_split(cube->p.map[i], ' ');
-	if (get_info3(&cube->p.no, str, "NO", 2))
+	if (get_info3(&cube->p.no, str, "NO", cube->p.map[i]))
 		ret = 1;
-	else if (get_info3(&cube->p.so, str, "SO", 2))
+	else if (get_info3(&cube->p.so, str, "SO", cube->p.map[i]))
 		ret = 1;
-	else if (get_info3(&cube->p.we, str, "WE", 2))
+	else if (get_info3(&cube->p.we, str, "WE", cube->p.map[i]))
 		ret = 1;
-	else if (get_info3(&cube->p.ea, str, "EA", 2))
+	else if (get_info3(&cube->p.ea, str, "EA", cube->p.map[i]))
 		ret = 1;
-	else if (get_info3(&cube->p.c, str, "C", 0))
+	else if (get_info3(&cube->p.c, str, "C", cube->p.map[i]))
 		ret = 1;
-	else if (get_info3(&cube->p.f, str, "F", 0))
+	else if (get_info3(&cube->p.f, str, "F", cube->p.map[i]))
 		ret = 1;
 	free_matrix(str);
 	return (ret);
