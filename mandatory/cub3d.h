@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/20 16:42:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 17:07:45 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define W_HEIGHT 1080
 # define TILE_SIZE 16
 # define FOV 60
-# define RADIUS 5
+# define RADIUS 3
 # define NUM_RAYS W_WIDTH
 
 typedef struct s_pos
