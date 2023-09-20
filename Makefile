@@ -6,7 +6,7 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 13:55:07 by orakib            #+#    #+#              #
-#    Updated: 2023/09/18 17:33:10 by orakib           ###   ########.fr        #
+#    Updated: 2023/09/20 14:48:48 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ BNS_HEADER = bonus/cub3d.h
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Ofast #-g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Ofast -g -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

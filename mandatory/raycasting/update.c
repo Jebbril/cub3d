@@ -6,11 +6,23 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:28:54 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/18 15:49:12 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:51:33 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	update2(t_cube *cube, float newx, float newy)
+{
+	if (!has_wall2(cube, newx + RADIUS, newy, cube->pl.pos)
+		&& !has_wall2(cube, newx - RADIUS, newy, cube->pl.pos)
+		&& !has_wall2(cube, newx, newy + RADIUS, cube->pl.pos)
+		&& !has_wall2(cube, newx, newy - RADIUS, cube->pl.pos))
+	{
+		cube->pl.pos.x = newx;
+		cube->pl.pos.y = newy;
+	}
+}
 
 void	update(t_cube *cube)
 {
@@ -33,11 +45,7 @@ void	update(t_cube *cube)
 		newx += cos(cube->pl.rotationangle + M_PI_2) * cube->pl.walkspeed;
 		newy += sin(cube->pl.rotationangle + M_PI_2) * cube->pl.walkspeed;
 	}
-	if (!has_wall2(cube, newx, newy, cube->pl.pos))
-	{
-		cube->pl.pos.x = newx;
-		cube->pl.pos.y = newy;
-	}
+	update2(cube, newx, newy);
 }
 
 void	render(t_cube *cube)
