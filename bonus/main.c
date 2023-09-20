@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:40:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/18 20:28:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:54:44 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char **av)
 	cube.so_tab = NULL;
 	cube.ea_tab = NULL;
 	cube.we_tab = NULL;
+	cube.cols = NULL;
 	cube.state = MLX_MOUSE_NORMAL;
 	parsing(ac, av, &cube);
 	raycasting(&cube);

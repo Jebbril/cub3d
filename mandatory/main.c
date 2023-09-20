@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:40:49 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 20:27:47 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:54:07 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char **av)
 	cube.so_tab = NULL;
 	cube.ea_tab = NULL;
 	cube.we_tab = NULL;
+	cube.cols = NULL;
 	parsing(ac, av, &cube);
 	raycasting(&cube);
 	garbage(&cube);

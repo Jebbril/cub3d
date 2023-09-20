@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 10:59:55 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/20 15:23:38 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:46:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	has_wall(t_cube *cube, float x, float y)
 	mapgridindexx = floor(x / TILE_SIZE);
 	mapgridindexy = fabs(floor(y / TILE_SIZE));
 	if (mapgridindexy >= cube->rows
-		|| mapgridindexx >= cube->max_cols)
+		|| mapgridindexx >= cube->cols[mapgridindexy])
 		return (1);
 	if (cube->p.map[mapgridindexy][mapgridindexx] == '1')
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/18 20:27:28 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:50:41 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct s_cube
 	t_ray			rays[NUM_RAYS];
 	float			fov;
 	int				rows;
+	int				*cols;
 	int				max_cols;
 	mlx_texture_t	*no;
 	mlx_texture_t	*so;
@@ -158,6 +159,7 @@ int			ft_atoi(const char *str);
 char		*ft_substr(char *s, unsigned int start, size_t len);
 char		**ft_split(char *s, char c);
 void		free_matrix(char **matrice);
+void		free_matrix2(int **matrice);
 void		garbage(t_cube *cube);
 void		get_info(t_cube *cube);
 void		get_map(t_cube *cube);

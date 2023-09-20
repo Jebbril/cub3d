@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:18:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 22:39:44 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:45:26 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,25 @@ void	init_ray(t_cube *cube, int i, float rayangle)
 	cube->rays[i].israyfacingleft = !cube->rays[i].israyfacingright;
 }
 
+void	init_cols(t_cube *cube)
+{
+	int	i;
+
+	i = 0;
+	cube->cols = malloc(sizeof(int) * cube->rows);
+	if (!cube->cols)
+	{
+		garbage(cube);
+		write(2, "maloc problem!\n", 16);
+		exit(EXIT_FAILURE);
+	}
+	while (i < cube->rows)
+	{
+		cube->cols[i] = ft_strlen(cube->p.map[i]);
+		i++;
+	}
+}
+
 void	initialize(t_cube *cube)
 {
 	set_pos(cube);
@@ -94,4 +113,5 @@ void	initialize(t_cube *cube)
 			cube->max_cols = ft_strlen(cube->p.map[cube->rows]);
 		cube->rows++;
 	}
+	init_cols(cube);
 }

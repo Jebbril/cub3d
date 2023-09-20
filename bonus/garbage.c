@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:14:10 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 19:56:49 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:49:48 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	garbage2(t_cube *cube)
 		free_matrix2(cube->ea_tab);
 	if (cube->we_tab)
 		free_matrix2(cube->we_tab);
+	if (cube->cols)
+		free(cube->cols);
 }
 
 void	garbage(t_cube *cube)
