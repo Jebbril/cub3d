@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:03:14 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/20 17:05:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/25 20:45:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,6 @@ int	**get_colorarray(mlx_texture_t *image)
 		return (NULL);
 	}
 	return (tab);
-}
-
-uint32_t	get_textpixel(t_cube *cube, t_walls *v, int side)
-{
-	int			text_x;
-	int			text_y;
-
-	if (cube->rays[v->i].washitvertical)
-		text_x = (int)((cube->rays[v->i].wallhity / TILE_SIZE)
-				* cube->no->width) % cube->no->width;
-	else
-		text_x = (int)((cube->rays[v->i].wallhitx * cube->no->width)
-				/ TILE_SIZE) % cube->no->width;
-	text_y = v->y + (v->wallstrip_height / 2) - (W_HEIGHT / 2);
-	text_y = text_y * ((double)cube->no->height / v->wallstrip_height);
-	if (text_y == 64)
-		text_y = 63;
-	if (side == 1)
-		return (cube->no_tab[text_y][text_x]);
-	else if (side == 2)
-		return (cube->so_tab[text_y][text_x]);
-	else if (side == 3)
-		return (cube->ea_tab[text_y][text_x]);
-	else if (side == 4)
-		return (cube->we_tab[text_y][text_x]);
-	return (0);
 }
 
 int	load_pngs(t_cube *cube)

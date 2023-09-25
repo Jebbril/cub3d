@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 21:03:08 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/17 19:47:53 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/25 20:56:21 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	render_walls(t_cube *cube)
 		{
 			if (cube->rays[v.i].israyfacingup
 				&& !cube->rays[v.i].washitvertical)
-				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 1));
+				my_put_pixel(cube, v.i, v.y, get_textpixel_no(cube, &v));
 			else if (cube->rays[v.i].israyfacingdown
 				&& !cube->rays[v.i].washitvertical)
-				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 2));
+				my_put_pixel(cube, v.i, v.y, get_textpixel_so(cube, &v));
 			else if (cube->rays[v.i].israyfacingright
 				&& cube->rays[v.i].washitvertical)
-				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 3));
+				my_put_pixel(cube, v.i, v.y, get_textpixel_ea(cube, &v));
 			else if (cube->rays[v.i].israyfacingleft
 				&& cube->rays[v.i].washitvertical)
-				my_put_pixel(cube, v.i, v.y, get_textpixel(cube, &v, 4));
+				my_put_pixel(cube, v.i, v.y, get_textpixel_we(cube, &v));
 		}
 	}
 }

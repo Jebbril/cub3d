@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/20 17:07:45 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/25 20:45:46 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,10 @@ void		render_walls(t_cube *cube);
 
 // textures
 int			load_pngs(t_cube *cube);
-uint32_t	get_textpixel(t_cube *cube, t_walls *v, int side);
+uint32_t	get_textpixel_no(t_cube *cube, t_walls *v);
+uint32_t	get_textpixel_so(t_cube *cube, t_walls *v);
+uint32_t	get_textpixel_ea(t_cube *cube, t_walls *v);
+uint32_t	get_textpixel_we(t_cube *cube, t_walls *v);
 
 // utils
 int			has_wall(t_cube *cube, float x, float y);
