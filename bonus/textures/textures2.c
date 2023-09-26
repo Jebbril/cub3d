@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 20:26:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/25 20:42:53 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/26 14:02:22 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ uint32_t	get_textpixel_no(t_cube *cube, t_walls *v)
 	int			text_y;
 
 	if (cube->rays[v->i].washitvertical)
-		text_x = (int)((cube->rays[v->i].wallhity / TILE_SIZE)
-				* cube->no->width) % cube->no->width;
+		text_x = fmod(cube->rays[v->i].wallhity, TILE_SIZE)
+			* cube->no->width / TILE_SIZE;
 	else
-		text_x = (int)((cube->rays[v->i].wallhitx * cube->no->width)
-				/ TILE_SIZE) % cube->no->width;
+		text_x = fmod(cube->rays[v->i].wallhitx, TILE_SIZE)
+			* cube->no->width / TILE_SIZE;
 	text_y = v->y + (v->wallstrip_height / 2) - (W_HEIGHT / 2);
 	text_y = text_y * ((double)cube->no->height / v->wallstrip_height);
 	if (text_y >= (int)cube->no->height)
@@ -37,11 +37,11 @@ uint32_t	get_textpixel_so(t_cube *cube, t_walls *v)
 	int			text_y;
 
 	if (cube->rays[v->i].washitvertical)
-		text_x = (int)((cube->rays[v->i].wallhity / TILE_SIZE)
-				* cube->so->width) % cube->so->width;
+		text_x = fmod(cube->rays[v->i].wallhity, TILE_SIZE)
+			* cube->so->width / TILE_SIZE;
 	else
-		text_x = (int)((cube->rays[v->i].wallhitx * cube->so->width)
-				/ TILE_SIZE) % cube->so->width;
+		text_x = fmod(cube->rays[v->i].wallhitx, TILE_SIZE)
+			* cube->so->width / TILE_SIZE;
 	text_y = v->y + (v->wallstrip_height / 2) - (W_HEIGHT / 2);
 	text_y = text_y * ((double)cube->so->height / v->wallstrip_height);
 	if (text_y >= (int)cube->so->height)
@@ -56,11 +56,11 @@ uint32_t	get_textpixel_ea(t_cube *cube, t_walls *v)
 	int			text_y;
 
 	if (cube->rays[v->i].washitvertical)
-		text_x = (int)((cube->rays[v->i].wallhity / TILE_SIZE)
-				* cube->ea->width) % cube->ea->width;
+		text_x = fmod(cube->rays[v->i].wallhity, TILE_SIZE)
+			* cube->ea->width / TILE_SIZE;
 	else
-		text_x = (int)((cube->rays[v->i].wallhitx * cube->ea->width)
-				/ TILE_SIZE) % cube->ea->width;
+		text_x = fmod(cube->rays[v->i].wallhitx, TILE_SIZE)
+			* cube->ea->width / TILE_SIZE;
 	text_y = v->y + (v->wallstrip_height / 2) - (W_HEIGHT / 2);
 	text_y = text_y * ((double)cube->ea->height / v->wallstrip_height);
 	if (text_y >= (int)cube->ea->height)
@@ -75,11 +75,11 @@ uint32_t	get_textpixel_we(t_cube *cube, t_walls *v)
 	int			text_y;
 
 	if (cube->rays[v->i].washitvertical)
-		text_x = (int)((cube->rays[v->i].wallhity / TILE_SIZE)
-				* cube->we->width) % cube->we->width;
+		text_x = fmod(cube->rays[v->i].wallhity, TILE_SIZE)
+			* cube->we->width / TILE_SIZE;
 	else
-		text_x = (int)((cube->rays[v->i].wallhitx * cube->we->width)
-				/ TILE_SIZE) % cube->we->width;
+		text_x = fmod(cube->rays[v->i].wallhitx, TILE_SIZE)
+			* cube->we->width / TILE_SIZE;
 	text_y = v->y + (v->wallstrip_height / 2) - (W_HEIGHT / 2);
 	text_y = text_y * ((double)cube->we->height / v->wallstrip_height);
 	if (text_y >= (int)cube->we->height)
