@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:17:20 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/19 19:58:11 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/26 15:50:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,27 @@ int	has_wall3(t_cube *cube, float x, float y)
 	if (mapgridindexy >= cube->rows
 		|| mapgridindexx >= cube->max_cols)
 		return (1);
-	if (cube->p.map[mapgridindexy][mapgridindexx] == '1'
-		|| cube->p.map[mapgridindexy][mapgridindexx] == ' ')
+	if (cube->p.map[mapgridindexy][mapgridindexx] == '1')
 		return (1);
+	if (cube->p.map[mapgridindexy][mapgridindexx] == ' ')
+		return (2);
 	else
 		return (0);
+}
+
+void	choose_color(t_mini *v, t_cube *cube)
+{
+	if (v->i >= 0 && v->j >= 0)
+	{
+		if (has_wall3(cube, v->j, v->i) == 1)
+			my_put_pixel(cube, v->jzero, v->izero, 0x000000FF);
+		else if (has_wall3(cube, v->j, v->i) == 2)
+			my_put_pixel(cube, v->jzero, v->izero, 0x0000FFFF);
+		else
+			my_put_pixel(cube, v->jzero, v->izero, 0xFFFFFFFF);
+	}
+	else
+		my_put_pixel(cube, v->jzero, v->izero, 0x000000FF);
 }
 
 void	draw_minimap(t_cube *cube)
@@ -41,15 +57,7 @@ void	draw_minimap(t_cube *cube)
 		v.jzero = 0;
 		while (v.jzero < 400)
 		{
-			if (v.i >= 0 && v.j >= 0)
-			{
-				if (has_wall3(cube, v.j, v.i))
-					my_put_pixel(cube, v.jzero, v.izero, 0x000000FF);
-				else
-					my_put_pixel(cube, v.jzero, v.izero, 0xFFFFFFFF);
-			}
-			else
-				my_put_pixel(cube, v.jzero, v.izero, 0x000000FF);
+			choose_color(&v, cube);
 			v.j++;
 			v.jzero++;
 		}
