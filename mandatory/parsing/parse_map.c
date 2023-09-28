@@ -6,7 +6,7 @@
 /*   By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:31:07 by mmesbahi          #+#    #+#             */
-/*   Updated: 2023/09/27 15:31:12 by mmesbahi         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:18:50 by mmesbahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,5 @@ void	parse_map(t_cube *cube)
 		garbage(cube);
 		exit(EXIT_FAILURE);
 	}
+	check_content(cube);
 }

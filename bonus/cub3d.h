@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmesbahi <mmesbahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:41:03 by orakib            #+#    #+#             */
-/*   Updated: 2023/09/25 20:56:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/09/28 15:20:22 by mmesbahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ void		get_info(t_cube *cube);
 void		get_map(t_cube *cube);
 void		parse_map(t_cube *cube);
 void		parse_info(t_cube *cube);
+void		check_content(t_cube *cube);
 
 // raycating
 int			raycasting(t_cube *cube);
